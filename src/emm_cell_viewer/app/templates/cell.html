@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for graph in cell.tree_graphs %}
+  <p>{{ graph.vertex_properties.genes }}</p>
+  {% endfor %}
+
+{% endblock %}

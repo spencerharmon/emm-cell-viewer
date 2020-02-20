@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for aeps, grid in epochs.items() %}
+    <div><h1><a href="/epoch/{{ aeps }}">{{ aeps }} aeps</a></h1></div>
+    <hr>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  #grid {
+      font-family:monospace;
+      font-size: 8px;
+      line-height: 20%
+  }
+</style>
+  {% for line in grid_ascii.split('\n') %}
+<p id="grid">{{ line }}</p>
+  {% endfor %}
+<hr>
+  {% for cell in grid.cells %}
+<p><a href="/epoch/{{ epoch }}/cell/{{ cell.identifier.data_members['id'] }}">Cell {{ cell.identifier.data_members["id"] }}</a></p>
+  {% endfor %}
+
+{% endblock %}

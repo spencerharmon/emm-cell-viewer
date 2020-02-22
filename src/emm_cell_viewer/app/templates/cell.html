@@ -1,8 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>Cell {{ cell.identifier.data_members["id"] }}</h1>
+<ul>
   {% for graph in cell.tree_graphs %}
-  <p>{{ graph.vertex_properties.genes }}</p>
+  <li><h2>Tree {{ graph.graph_properties.treeID }}</h2><br />
+    {{ markup(graph.graph_properties.inline_svg) }}
+    <ul>
+    {% for v in graph.vertices() %}
+    <li><p>
+      <h3>{{ graph.vertex_properties.genes[v.__int__()].name }}</h3>
+      {% for k,v in graph.vertex_properties.genes[v.__int__()].data_members.items() %}
+      {{ k }}: {{ v }}<br />
+      {% endfor %}
+    </p></li>
+    <br />
+    {% endfor %}
+  </ul>
+  </li>
   {% endfor %}
+</ul>
 
 {% endblock %}

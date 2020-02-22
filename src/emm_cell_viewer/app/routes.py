@@ -3,6 +3,8 @@ from .parse import epochs
 from flask import render_template
 import io
 from contextlib import redirect_stdout
+from graph_tool.draw import graph_draw
+from jinja2 import Markup
 
 @app.route('/')
 @app.route('/index')
@@ -22,4 +24,4 @@ def cell(epoch, identifier):
     for c in epochs[epoch].cells:
         if c.identifier.data_members["id"] == identifier:
             cell = c
-    return render_template('cell.html', cell=cell)
+    return render_template('cell.html', cell=cell, graph_draw=graph_draw, markup=Markup)

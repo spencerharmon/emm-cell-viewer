@@ -24,4 +24,11 @@ def cell(epoch, identifier):
     for c in epochs[epoch].cells:
         if c.identifier.data_members["id"] == identifier:
             cell = c
-    return render_template('cell.html', cell=cell, graph_draw=graph_draw, markup=Markup)
+    return render_template('cell.html', cell=cell, graph_draw=graph_draw, epoch=epoch, identifier=identifier)
+
+@app.route('/epoch/<epoch>/cell/<identifier>_tree_<treeID>.svg')
+def tree_svg(epoch, identifier, treeID):
+    for c in epochs[epoch].cells:
+        if c.identifier.data_members["id"] == identifier:
+            cell = c
+    return render_template('tree.svg', cell=cell, graph_draw=graph_draw, markup=Markup, treeID=treeID)

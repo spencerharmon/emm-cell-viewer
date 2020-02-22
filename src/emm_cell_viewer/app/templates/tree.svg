@@ -1,0 +1,5 @@
+{% for graph in cell.tree_graphs %}
+  {% if graph.graph_properties.treeID == treeID %}
+    {{ markup(graph.graph_properties.inline_svg) }}
+  {% endif %}
+{% endfor %}

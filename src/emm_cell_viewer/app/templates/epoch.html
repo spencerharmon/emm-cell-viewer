@@ -2,6 +2,8 @@
 
 {% block content %}
 <h1>Epoch {{ epoch }}</h1>
+<a href="/epoch/{{ prev_epoch }}">prev epoch</a>
+<a href="/epoch/{{ next_epoch }}">next epoch</a>
 <style>
   #grid {
       font-family:monospace;

@@ -8,5 +8,5 @@ epochs = {}
 for filename in os.listdir(directory):
     print(filename)
     if filename.endswith('.save'):
-        epochs.update({filename.split('.')[0]: Grid(f'{directory}/{filename}')})
+        epochs.update({filename.split('.')[0].split('-')[-1]: Grid(f'{directory}/{filename}')})
 

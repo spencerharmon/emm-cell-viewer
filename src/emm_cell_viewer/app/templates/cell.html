@@ -2,6 +2,8 @@
 
 {% block content %}
 <h1>Cell {{ identifier }}</h1>
+<a href="/epoch/{{ prev_epoch }}/cell/{{ identifier }}">prev epoch</a>
+<a href="/epoch/{{ next_epoch }}/cell/{{ identifier }}">next epoch</a>
 <style>
   #mfm_ascii_grid {
       font-family:monospace;
@@ -33,7 +35,9 @@
     {% for graph in cell.tree_graphs %}
     
     <div class=graph>
-      <h2>Tree {{ graph.graph_properties.treeID }}</h2><br>
+      <h2><a id="tree{{ graph.graph_properties.treeID }}"></a>Tree {{ graph.graph_properties.treeID }}</h2><br>
+      <a href="/epoch/{{ prev_epoch }}/cell/{{ identifier }}#tree{{ graph.graph_properties.treeID }}">prev epoch</a>
+      <a href="/epoch/{{ next_epoch }}/cell/{{ identifier }}#tree{{ graph.graph_properties.treeID }}">next epoch</a>
       <object type="image/svg+xml" data="{{ identifier }}_tree_{{ graph.graph_properties.treeID }}.svg" style="width:100%;height:100%;"></object>
     </div>
     <div class=data_members>

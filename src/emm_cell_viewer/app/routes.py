@@ -45,7 +45,8 @@ def epoch(epoch):
 def cell(epoch, identifier):
     prev_epoch, next_epoch = get_prev_next_epoch(epoch)
     for c in epochs[epoch].cells:
-        if c.identifier.data_members["id"] == identifier:
+        if c.identifier.data_members["id"] == int(identifier):
+            print("IFOUND THECELL!!")
             cell = c
     with io.StringIO() as buf, redirect_stdout(buf):
         cell.print_cell_grid()
@@ -62,7 +63,7 @@ def cell(epoch, identifier):
 def tree_svg(epoch, identifier, treeID):
     prev_epoch, next_epoch = get_prev_next_epoch(epoch)
     for c in epochs[epoch].cells:
-        if c.identifier.data_members["id"] == identifier:
+        if c.identifier.data_members["id"] == int(identifier):
             cell = c
     return render_template('tree.svg',
                            cell=cell,

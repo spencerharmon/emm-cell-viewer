@@ -11,6 +11,7 @@ def get_prev_next_epoch(epoch):
     Loop through the epoch keys to determine the next and prev. Note that the dict keys are latest first.
     """
     found = False
+    last = 0
     for e in epochs.keys():
         if found:
             prev_epoch = e
@@ -46,7 +47,6 @@ def cell(epoch, identifier):
     prev_epoch, next_epoch = get_prev_next_epoch(epoch)
     for c in epochs[epoch].cells:
         if c.identifier.data_members["id"] == int(identifier):
-            print("IFOUND THECELL!!")
             cell = c
     with io.StringIO() as buf, redirect_stdout(buf):
         cell.print_cell_grid()
@@ -68,6 +68,6 @@ def tree_svg(epoch, identifier, treeID):
     return render_template('tree.svg',
                            cell=cell,
                            markup=Markup,
-                           treeID=treeID,
+                           treeID=int(treeID),
                            prev_epoch=prev_epoch,
                            next_epoch=next_epoch)
